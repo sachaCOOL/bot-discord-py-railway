@@ -12,10 +12,14 @@ def get_crypto_prices():
     prices = {}
 
     for crypto in crypto_list:
-        response = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={crypto}&vs_currencies=usd")
-        data = response.json()
-        if crypto in data:
-            prices[crypto] = data[crypto]["usd"]
+        try:
+            response = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={crypto}&vs_currencies=usd")
+            response.raise_for_status()  # Raise an exception for non-200 HTTP status codes
+            data = response.json()
+            if crypto in data:
+                prices[crypto] = data[crypto]["usd"]
+        except Exception as e:
+            print(f"Error fetching {crypto} price: {e}")
 
     return prices
 
@@ -34,13 +38,18 @@ async def on_message(message):
     if message.content.startswith('$caca'):
         await message.channel.send('Tu es une merde sale pute 💩')
 
-    if message.content.startswith('$crypto'):
+    if message.content.lower().startswith('$crypto'):
         prices = get_crypto_prices()
         if prices:
             price_message = "\n".join(f"{crypto.capitalize()}: ${price}" for crypto, price in prices.items())
             await message.channel.send(f"Real-time cryptocurrency prices:\n{price_message}")
 
 # On récupère notre token discord dans l'env de Railway
+bot_token = os.environ.get("DISCORD_BOT_TOKEN")
+
+# Pour lancer le bot
+client.run(bot_token)
+
 bot_token = os.environ.get("DISCORD_BOT_TOKEN")
 
 # Pour lancer le bot
