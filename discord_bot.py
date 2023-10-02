@@ -8,7 +8,7 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 
 def get_crypto_prices():
-    crypto_list = ["bitcoin", "ethereum", "dogecoin", "litecoin", "matic", "ripple", "access"]
+    crypto_list = ["bitcoin", "ethereum", "dogecoin", "litecoin", "polygon", "ripple", "theter", "solana", "bitcoin-cash"]
     prices = {}
 
     for crypto in crypto_list:
