@@ -2,8 +2,14 @@ import os
 import discord
 import requests
 
+# Install certifi if you haven't already
+# pip install certifi
+
+# Get the path to the certifi bundle
+certifi_path = os.path.join(os.path.dirname(__file__), 'certifi', 'cacert.pem')
+
 # Set the REQUESTS_CA_BUNDLE environment variable to use the certifi bundle
-os.environ['REQUESTS_CA_BUNDLE'] = os.path.join(os.path.dirname(__file__), 'certifi', 'cacert.pem')
+os.environ['REQUESTS_CA_BUNDLE'] = certifi_path
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -52,3 +58,4 @@ bot_token = os.environ.get("DISCORD_BOT_TOKEN")
 
 # Pour lancer le bot
 client.run(bot_token)
+
