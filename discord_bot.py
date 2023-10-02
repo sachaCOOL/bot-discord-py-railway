@@ -41,6 +41,9 @@ async def on_message(message):
     if message.content.startswith('$caca') or message.content.startswith('$merde'):
         await message.channel.send('Tu es une merde sale pute 💩')
 
+    if message.content.startswith('$help') or message.content.startswith('$aide'):
+        await message.channel.send('$crypto : displays a list of cryptocurrencies and their price')
+
     if message.content.lower().startswith('$crypto'):
         prices = get_crypto_prices()
         if prices:
