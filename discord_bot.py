@@ -2,15 +2,6 @@ import os
 import discord
 import requests
 
-# Install certifi if you haven't already
-# pip install certifi
-
-# Get the path to the certifi bundle
-certifi_path = os.path.join(os.path.dirname(__file__), 'certifi', 'cacert.pem')
-
-# Set the REQUESTS_CA_BUNDLE environment variable to use the certifi bundle
-os.environ['REQUESTS_CA_BUNDLE'] = certifi_path
-
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -22,7 +13,10 @@ def get_crypto_prices():
 
     for crypto in crypto_list:
         try:
-            response = requests.get(f"https://api.coingecko.com/api/v3/simple/price?ids={crypto}&vs_currencies=usd")
+            response = requests.get(
+                f"https://api.coingecko.com/api/v3/simple/price?ids={crypto}&vs_currencies=usd",
+                verify=False  # Disable SSL certificate verification
+            )
             response.raise_for_status()  # Raise an exception for non-200 HTTP status codes
             data = response.json()
             if crypto in data:
