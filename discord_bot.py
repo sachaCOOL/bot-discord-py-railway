@@ -8,7 +8,7 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 
 def get_crypto_prices():
-    crypto_list = ["bitcoin", "ethereum", "dogecoin", "litecoin", "matic", "ripple"]
+    crypto_list = ["bitcoin", "ethereum", "dogecoin", "litecoin", "matic"]
     prices = {}
 
     for crypto in crypto_list:
@@ -38,7 +38,7 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-    if message.content.startswith('$caca'):
+    if message.content.startswith('$caca') or message.content.startswith('$merde'):
         await message.channel.send('Tu es une merde sale pute 💩')
 
     if message.content.lower().startswith('$crypto'):
@@ -52,4 +52,3 @@ bot_token = os.environ.get("DISCORD_BOT_TOKEN")
 
 # Pour lancer le bot
 client.run(bot_token)
-
