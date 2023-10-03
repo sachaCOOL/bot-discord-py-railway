@@ -49,39 +49,13 @@ async def on_message(message):
         await message.channel.send('$crypto : displays a list of cryptocurrencies and their price')
 
     if message.content.startswith('$pfc') and message.content.endswith('feuille'):
-        
         await message.channel.send(randSi)
-      
-          if randSi == 'Pierre':
-            message.channel.send("Ahhh tu m'as battu")
-          elif randSi == 'Ciseaux':
-            message.channel.send("Je t'ai eu!!")
-          else :
-            message.channel.send("On a fait le meme!")
 
     if message.content.startswith('$pfc') and message.content.endswith('pierre'):
-        
         await message.channel.send(randSi)
-      
-          if randSi == 'Ciseaux':
-            message.channel.send("Ahhh tu m'as battu")
-          elif randSi == 'Feuille':
-            message.channel.send("Je t'ai eu!!")
-          else :
-            message.channel.send("On a fait le meme!")
 
-  
     if message.content.startswith('$pfc') and message.content.endswith('ciseaux'):
-        
         await message.channel.send(randSi)
-      
-          if randSi == 'Feuille':
-            message.channel.send("Ahhh tu m'as battu")
-          elif randSi == 'Pierre':
-            message.channel.send("Je t'ai eu!!")
-          else :
-            message.channel.send("On a fait le meme!")
-
 
     if message.content.lower().startswith('$crypto'):
         prices = get_crypto_prices()
