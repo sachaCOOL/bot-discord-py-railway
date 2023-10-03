@@ -1,6 +1,9 @@
 import os
 import discord
 import requests
+import random
+
+pfcLi = ['Pierre', 'Feuille', 'Ciseaux']
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -43,6 +46,9 @@ async def on_message(message):
 
     if message.content.startswith('$help') or message.content.startswith('$aide'):
         await message.channel.send('$crypto : displays a list of cryptocurrencies and their price')
+
+    if message.content.startswith('$pfc') and message.content.endswith('feuille'):
+        await message.channel.send(random.choice(pcfLi))
 
     if message.content.lower().startswith('$crypto'):
         prices = get_crypto_prices()
