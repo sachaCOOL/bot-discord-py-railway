@@ -51,6 +51,13 @@ async def on_message(message):
     if message.content.startswith('$pfc') and message.content.endswith('feuille'):
         await message.channel.send(randSi)
 
+        if randSi == 'Pierre':
+          message.channel.send("Ahhh tu m'as battu")
+        elif randSi == 'Ciseaux':
+          message.channel.send("Je t'ai eu!!")
+        else :
+          message.channel.send("On a fait le meme!")
+
     if message.content.startswith('$pfc') and message.content.endswith('pierre'):
         await message.channel.send(randSi)
 
