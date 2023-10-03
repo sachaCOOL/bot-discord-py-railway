@@ -4,7 +4,7 @@ import requests
 import random
 
 pfcLi = ['Pierre', 'Feuille', 'Ciseaux']
-randSi = random.choice(pcfLi)
+randSi = random.choice(pfcLi)
 
 intents = discord.Intents.default()
 intents.message_content = True
