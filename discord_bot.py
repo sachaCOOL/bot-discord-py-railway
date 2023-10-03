@@ -48,7 +48,7 @@ async def on_message(message):
         await message.channel.send('$crypto : displays a list of cryptocurrencies and their price')
 
     if message.content.startswith('$pfc') and message.content.endswith('feuille'):
-        await message.channel.send(random.choice(pcfLi))
+        await message.channel.send(random.choice(pfcLi))
 
     if message.content.lower().startswith('$crypto'):
         prices = get_crypto_prices()
