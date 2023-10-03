@@ -4,6 +4,7 @@ import requests
 import random
 
 pfcLi = ['Pierre', 'Feuille', 'Ciseaux']
+randSi = random.choice(pcfLi)
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -48,7 +49,7 @@ async def on_message(message):
         await message.channel.send('$crypto : displays a list of cryptocurrencies and their price')
 
     if message.content.startswith('$pfc') and message.content.endswith('feuille'):
-        randSi = random.choice(pcfLi)
+        
         await message.channel.send(randSi)
       
           if randSi == 'Pierre':
@@ -59,7 +60,7 @@ async def on_message(message):
             message.channel.send("On a fait le meme!")
 
     if message.content.startswith('$pfc') and message.content.endswith('pierre'):
-        randSi = random.choice(pcfLi)
+        
         await message.channel.send(randSi)
       
           if randSi == 'Ciseaux':
@@ -71,7 +72,7 @@ async def on_message(message):
 
   
     if message.content.startswith('$pfc') and message.content.endswith('ciseaux'):
-        randSi = random.choice(pcfLi)
+        
         await message.channel.send(randSi)
       
           if randSi == 'Feuille':
