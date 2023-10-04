@@ -81,6 +81,10 @@ async def play_youtube(ctx, channel_name: str, url: str):
     # Get the voice channel that the user is in
     author_vc = ctx.author.voice.channel
 
+    # Debugging: Print the received channel name and URL
+    print(f"Received channel_name: {channel_name}")
+    print(f"Received URL: {url}")
+
     # Check if the user is in the target voice channel
     if author_vc != target_channel:
         await ctx.send("You can only play in your own voice channel.")
@@ -106,6 +110,7 @@ async def play_youtube(ctx, channel_name: str, url: str):
         await ctx.send(f"Now playing: {url}")
     except Exception as e:
         await ctx.send(f"An error occurred: {e}")
+
 
 # On récupère notre token discord dans l'env de Railway
 bot_token = os.environ.get("DISCORD_BOT_TOKEN")
